@@ -1,7 +1,7 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Home, Folder, User } from "lucide-react";
+import { Home, Folder, User, Hexagon } from "lucide-react";
 import Sidebar, { type NavItem } from "@/components/sidebar";
 import "./globals.css";
 
@@ -26,6 +26,12 @@ const navItems: NavItem[] = [
     label: "Projects",
     icon: <Folder size={36} />,
     href: "/projects",
+  },
+  {
+    id: "skills",
+    label: "skills",
+    icon: <Hexagon size={36} />,
+    href: "/skills",
   },
   { id: "about", label: "About", icon: <User size={36} />, href: "/about" },
 ];
