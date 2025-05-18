@@ -13,7 +13,7 @@ export default function ExperienceCard({
 }: ExperienceCardProps) {
   return (
     <div
-      className="relative rounded-xl p-8 hover:bg-black/60 transition-all duration-300"
+      className="relative rounded-xl p-8 hover:bg-black/60 hover:scale-105 transform transition-transform duration-500"
       style={{
         /* leave room for the gradient ring */
         border: "1px solid transparent",
