@@ -12,16 +12,14 @@ type RFEdge = Edge;
 export function radialLayout(
   nodes: RFNode[],
   edges: RFEdge[],
-  radiusStep = 140,
+  radiusStep = 180,
   anglePad = 10,
-  totalAngle = 360, // NEW  – how much of the circle to fill
-  startAngle = -90 // NEW  – where that sweep begins (-90° = straight up)
+  totalAngle = 360,
+  startAngle = -90
 ): RFNode[] {
   // 1. Build adjacency + depth map
   const childMap = new Map<string, string[]>(); // parent → children[]
   const parentMap = new Map<string, string>(); // child  → parent
-  console.log("🚀 ~ childMap:", childMap);
-  console.log("🚀 ~ parentMap:", parentMap);
 
   edges.forEach((e) => {
     childMap.set(e.source, [...(childMap.get(e.source) ?? []), e.target]);
@@ -72,7 +70,7 @@ export function radialLayout(
     });
   }
 
-  // 3. Recursively assign an angular segment to each subtree
+  // Place nodes in their angular segments
   roots.forEach((r) => {
     const seg = (leafCount(r.id) / fullLeaves) * totalAngle;
     place(r.id, globalAngle, seg);
