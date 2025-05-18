@@ -1,17 +1,37 @@
 // src/app/page.tsx
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import EducationCard from "@/components/EducationCard";
 import ExperienceCard from "@/components/ExperienceCard";
 import { ChevronDown } from "lucide-react";
 
 export default function Home() {
+  const [showHeader, setShowHeader] = useState<boolean>(true);
   return (
     <div className="flex flex-col flex-1">
-      <header className="fixed top-0 left-0 w-full z-50 p-4">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white text-center drop-shadow-lg">
+      <header className="fixed top-0 left-0 w-full z-50 p-4 flex items-center justify-center gap-4">
+        <h1
+          className={`text-4xl md:text-6xl font-extrabold text-white text-center drop-shadow-lg transform transition-all duration-300 ${
+            showHeader ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
           FELIX FERGILEOSIA
         </h1>
+
+        <button
+          onClick={() => setShowHeader((prev) => !prev)}
+          className="focus:outline-none"
+        >
+          <ChevronDown
+            size={32}
+            className={`text-white/80 transition-transform duration-300 ${
+              showHeader ? "rotate-0" : "rotate-180"
+            }`}
+          />
+        </button>
       </header>
+
       {/* 🚀 Sticky hero */}
       <div className="w-full h-screen overflow-hidden">
         <section
