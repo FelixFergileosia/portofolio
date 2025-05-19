@@ -1,7 +1,7 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Home, Folder, User, Hexagon } from "lucide-react";
+import { Home, Folder, Hexagon } from "lucide-react";
 import Sidebar, { type NavItem } from "@/components/sidebar";
 import "./globals.css";
 
