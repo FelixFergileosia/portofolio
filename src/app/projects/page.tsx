@@ -32,21 +32,20 @@ const projects: Project[] = [
     id: "ev-dashboard",
     title: "Smart EV Dashboard",
     description:
-      "Realtime dashboard that visualises battery health and trip data for electric scooters. Built with Next.js & WebSockets.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Socket.IO"],
+      "Realtime dashboard that visualises battery health and other vehicle information for Polytron EV Motorcycles. Built with React.",
+    tech: ["React", "Javascript", "Tailwind"],
     github: "https://github.com/yourname/ev-dashboard",
     demo: "https://ev-demo.vercel.app",
-    image: "/fokus-crypto-meme.jpg",
+    image: "/smartevdashboard.png",
     kind: "company",
   },
   {
     id: "anime-scraper",
     title: "MyAnimeList Scraper",
-    description:
-      "Headless Puppeteer script that pulls top‑10 anime data nightly and stores snapshots in PostgreSQL for trend analysis.",
-    tech: ["Node.js", "TypeScript", "Puppeteer", "PostgreSQL"],
+    description: "Headless Puppeteer script that pulls anime data",
+    tech: ["Node.js", "Puppeteer"],
     github: "https://github.com/yourname/mal-scraper",
-    image: "/fokus-crypto-meme.jpg",
+    image: "/myanimelistscrapper.png",
     kind: "personal",
   },
   {
@@ -54,8 +53,8 @@ const projects: Project[] = [
     title: "App Link Redirect Service",
     description:
       "Production microservice that redirects users to Google Play or App Store based on their User‑Agent.",
-    tech: ["Express", "Docker", "Nginx"],
-    image: "/fokus-crypto-meme.jpg",
+    tech: ["Express", "Docker"],
+    image: "/applink.png",
     kind: "company", // 🏢 work project – no public repo or demo
   },
 ];
@@ -149,7 +148,7 @@ function ProjectCard({
 // ——————————————————————————————————————————————————————
 export default function ProjectsPage() {
   return (
-    <section className="min-h-screen bg-neutral-950 py-24 px-6">
+    <section className="min-h-screen bg-neutral-950 py-24 px-24">
       <h1 className="text-5xl font-extrabold text-white text-center mb-12">
         Projects
       </h1>
