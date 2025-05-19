@@ -17,6 +17,7 @@ export function radialLayout(
   totalAngle = 360,
   startAngle = -90
 ): RFNode[] {
+  console.log("🚀 ~ nodes:", nodes);
   // 1. Build adjacency + depth map
   const childMap = new Map<string, string[]>(); // parent → children[]
   const parentMap = new Map<string, string>(); // child  → parent

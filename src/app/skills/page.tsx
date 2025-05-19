@@ -45,7 +45,7 @@ function SkillNode({ data, selected }: NodeProps) {
         return {
           ...baseStyle,
           background: "#1f2937",
-          border: "2px solid #fbbf24",
+          border: "2px solid #a8df24",
           color: "#fef3c7",
         };
       case "available":
@@ -91,21 +91,25 @@ function SkillNode({ data, selected }: NodeProps) {
       {/* main circle, no text inside */}
       <div style={nodeStyle}>
         <Handle
+          /* 1 ─ target (edges END here) */
           type="target"
-          position={Position.Top}
+          position={Position.Bottom} // ⬅ now the default target
           style={hiddenHandleStyle}
         />
         <Handle
+          /* 2 ─ optional extra target for side-hits; keep or remove */
           type="target"
           position={Position.Left}
           style={hiddenHandleStyle}
         />
         <Handle
+          /* 3 ─ source (edges START here) */
           type="source"
           position={Position.Bottom}
           style={hiddenHandleStyle}
         />
         <Handle
+          /* 4 ─ source on the right */
           type="source"
           position={Position.Right}
           style={hiddenHandleStyle}
@@ -168,9 +172,10 @@ export const initialNodes: Node[] = [
     id: "root",
     position: { x: 0, y: 0 },
     data: {
-      label: "Felix's Skill Tree",
-      status: "unlocked", // Start as unlocked
-      description: "Your development journey begins here",
+      label: "Software Engineering Skills",
+      status: "available", // Start as unlocked
+      description:
+        "This tree graph describe my journey in software engineering",
     },
     type: "skillNode",
   },
@@ -209,14 +214,24 @@ export const initialNodes: Node[] = [
     },
     type: "skillNode",
   },
-
+  {
+    id: "cms",
+    position: { x: 0, y: 0 },
+    data: {
+      label: "CMS",
+      status: "available", // Available to unlock
+      description: "Web Builder",
+      cost: 1,
+    },
+    type: "skillNode",
+  },
   // front-end
   {
     id: "react",
     position: { x: 0, y: 0 },
     data: {
       label: "React",
-      status: "locked",
+      status: "unlocked",
       description: "Component-based UI library",
       cost: 2,
     },
@@ -227,31 +242,19 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "JavaScript",
-      status: "locked",
+      status: "unlocked",
       description: "Core web programming language",
       cost: 1,
     },
     type: "skillNode",
   },
-  {
-    id: "wp",
-    position: { x: 0, y: 0 },
-    data: {
-      label: "WordPress",
-      status: "locked",
-      description: "CMS and website building",
-      cost: 2,
-    },
-    type: "skillNode",
-  },
-
   // back-end
   {
     id: "php",
     position: { x: 0, y: 0 },
     data: {
       label: "PHP",
-      status: "locked",
+      status: "unlocked",
       description: "Server-side scripting language",
       cost: 2,
     },
@@ -262,7 +265,7 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "Golang",
-      status: "locked",
+      status: "unlocked",
       description: "Fast and efficient language",
       cost: 3,
     },
@@ -273,7 +276,7 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "Laravel",
-      status: "locked",
+      status: "unlocked",
       description: "PHP web application framework",
       cost: 2,
     },
@@ -284,7 +287,7 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "Express",
-      status: "locked",
+      status: "unlocked",
       description: "Node.js web framework",
       cost: 2,
     },
@@ -295,7 +298,7 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "Jest",
-      status: "locked",
+      status: "unlocked",
       description: "JavaScript testing framework",
       cost: 1,
     },
@@ -306,18 +309,18 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "Microservices",
-      status: "locked",
+      status: "unlocked",
       description: "Distributed architecture pattern",
       cost: 3,
     },
     type: "skillNode",
   },
   {
-    id: "fullstack",
+    id: "rest",
     position: { x: 0, y: 0 },
     data: {
-      label: "Full-Stack",
-      status: "locked",
+      label: "REST",
+      status: "unlocked",
       description: "Complete web development",
       cost: 4,
     },
@@ -330,7 +333,7 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "Docker",
-      status: "locked",
+      status: "unlocked",
       description: "Container platform",
       cost: 2,
     },
@@ -341,8 +344,31 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 0 },
     data: {
       label: "Linux",
-      status: "locked",
+      status: "unlocked",
       description: "Server operating system",
+      cost: 2,
+    },
+    type: "skillNode",
+  },
+  {
+    id: "virtual-machine",
+    position: { x: 0, y: 0 },
+    data: {
+      label: "Virtual Machine",
+      status: "unlocked",
+      description: "Operating Virtual Machine",
+      cost: 2,
+    },
+    type: "skillNode",
+  },
+  //cms
+  {
+    id: "wp",
+    position: { x: 0, y: 0 },
+    data: {
+      label: "WordPress",
+      status: "unlocked",
+      description: "CMS and website building",
       cost: 2,
     },
     type: "skillNode",
@@ -375,6 +401,13 @@ export const initialEdges: Edge[] = [
     animated: true,
     style: { stroke: "#60a5fa", strokeWidth: 2 },
   },
+  {
+    id: "root-cms",
+    source: "root",
+    target: "cms",
+    animated: true,
+    style: { stroke: "#60a5fa", strokeWidth: 2 },
+  },
 
   // front-end - locked connections
   {
@@ -389,13 +422,6 @@ export const initialEdges: Edge[] = [
     target: "js",
     style: { stroke: "#4b5563", strokeWidth: 2 },
   },
-  {
-    id: "fe-wp",
-    source: "fe",
-    target: "wp",
-    style: { stroke: "#4b5563", strokeWidth: 2 },
-  },
-
   // back-end - locked connections
   {
     id: "be-php",
@@ -436,7 +462,7 @@ export const initialEdges: Edge[] = [
   {
     id: "be-fs",
     source: "be",
-    target: "fullstack",
+    target: "rest",
     style: { stroke: "#4b5563", strokeWidth: 2 },
   },
 
@@ -453,11 +479,26 @@ export const initialEdges: Edge[] = [
     target: "linux",
     style: { stroke: "#4b5563", strokeWidth: 2 },
   },
+  {
+    id: "dev-virtual-machine",
+    source: "devops",
+    target: "virtual-machine",
+    style: { stroke: "#4b5563", strokeWidth: 2 },
+  },
+  //cms - locked connections
+  {
+    id: "cms-wp",
+    source: "cms",
+    target: "wp",
+    style: { stroke: "#4b5563", strokeWidth: 2 },
+  },
 ];
 
 /* ----------------------------------------------------------------------------
  * 4. Main skill tree component
  * --------------------------------------------------------------------------*/
+const nodeTypes = { skillNode: SkillNode };
+
 export default function SkillTreeDark() {
   // Skill points system
   const [skillPoints, setSkillPoints] = useState(5);
@@ -607,7 +648,11 @@ export default function SkillTreeDark() {
                   color: "#60a5fa",
                 }}
               >
-                Cost: {selectedNode.data.cost || 1} skill points
+                {selectedNode.data.cost > 0 && (
+                  <div style={{ marginTop: 4, color: "#60a5fa" }}>
+                    Cost: {selectedNode.data.cost} skill points
+                  </div>
+                )}
               </div>
               <button
                 onClick={unlockSkill}
@@ -645,7 +690,7 @@ export default function SkillTreeDark() {
       )}
 
       <ReactFlow
-        nodeTypes={{ skillNode: SkillNode }}
+        nodeTypes={nodeTypes}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -654,6 +699,10 @@ export default function SkillTreeDark() {
         onNodeClick={onNodeClick}
         fitView
         attributionPosition="bottom-right"
+        defaultEdgeOptions={{
+          type: "straight", // 👈 makes every edge a straight line
+          style: { stroke: "#4b5563", strokeWidth: 2 }, // keep your colour / width
+        }}
         style={{ background: "#0d1117" }}
       >
         <Background

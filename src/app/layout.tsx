@@ -33,7 +33,6 @@ const navItems: NavItem[] = [
     icon: <Hexagon size={36} />,
     href: "/skills",
   },
-  { id: "about", label: "About", icon: <User size={36} />, href: "/about" },
 ];
 
 /* --------- layout --------- */
