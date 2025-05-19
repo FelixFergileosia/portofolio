@@ -167,7 +167,7 @@ function SkillNode({ data, selected }: NodeProps) {
 /* ----------------------------------------------------------------------------
  * 2. Enhanced nodes with gaming-style data
  * --------------------------------------------------------------------------*/
-export const initialNodes: Node[] = [
+const initialNodes: Node[] = [
   {
     id: "root",
     position: { x: 0, y: 0 },
@@ -378,7 +378,7 @@ export const initialNodes: Node[] = [
 /* ----------------------------------------------------------------------------
  * 3. Enhanced edges with visual styling
  * --------------------------------------------------------------------------*/
-export const initialEdges: Edge[] = [
+const initialEdges: Edge[] = [
   // branches - active connections
   {
     id: "root-fe",
